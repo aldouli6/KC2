@@ -45,7 +45,7 @@ function obtainToken($issuer, $clientId, $clientSecret, $scope) {
         exit('failed, exiting.');
     }
 
-    echo "success!\n";
+    echo "success!\n ". $response['token_type'] . " " . $response['access_token'];
     // here's your token to use in API requests
     return $response['token_type'] . " " . $response['access_token'];
 }

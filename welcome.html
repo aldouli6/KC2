@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- jQuery -->
+<title>phpzag.com : Demo Ajax Login Script with PHP and jQuery</title>
+<script type="text/javascript" src="script/validation.min.js"></script>
+<script type="text/javascript" src="script/welcome.js"></script>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="screen">
+
+<div class="container">    
+	<div id="navbar" class="navbar-collapse collapse">
+	 <ul class="nav navbar-nav navbar-right">            
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			  <span class="glyphicon glyphicon-user"></span>&nbsp;Hi <?php echo $row['user']; ?>&nbsp;<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <input id = "logout" type="submit" value="Sign Out"/>
+              </ul>
+            </li>
+          </ul>
+	</div>	
+	<div class='alert alert-success'>
+		<button class='close' data-dismiss='alert'>&times;</button>
+		Hello, <br><br>Welcome to the members page.<br><br>
+    </div>		
+</div>

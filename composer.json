@@ -9,5 +9,10 @@
         "psr-4": {
             "Src\\": "src/"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
     }
 }

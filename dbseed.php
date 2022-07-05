@@ -1,34 +1,39 @@
 <?php
 require 'bootstrap.php';
-
+$pass =  password_hash("password", PASSWORD_DEFAULT);
 $statement = <<<EOS
-    CREATE TABLE IF NOT EXISTS person (
+    CREATE TABLE IF NOT EXISTS groups (
         id INT NOT NULL AUTO_INCREMENT,
-        firstname VARCHAR(100) NOT NULL,
-        lastname VARCHAR(100) NOT NULL,
-        firstparent_id INT DEFAULT NULL,
-        secondparent_id INT DEFAULT NULL,
+        name VARCHAR(100) NOT NULL,
+        PRIMARY KEY (id)
+    ) ENGINE=INNODB;
+
+    INSERT INTO groups
+        (id, name)
+    VALUES
+        (1, 'Default'),
+        (2, 'Group A'),
+        (3, 'Group B'),
+        (4, 'Group C');
+
+    CREATE TABLE IF NOT EXISTS users (
+        id INT NOT NULL AUTO_INCREMENT,
+        name VARCHAR(100) NOT NULL,
+        username VARCHAR(100) NOT NULL,
+        group_id INT DEFAULT NULL,
+        password VARCHAR(255) NOT NULL,
         PRIMARY KEY (id),
-        FOREIGN KEY (firstparent_id)
-            REFERENCES person(id)
-            ON DELETE SET NULL,
-        FOREIGN KEY (secondparent_id)
-            REFERENCES person(id)
+        FOREIGN KEY (group_id)
+            REFERENCES groups(id)
             ON DELETE SET NULL
     ) ENGINE=INNODB;
 
-    INSERT INTO person
-        (id, firstname, lastname, firstparent_id, secondparent_id)
+    INSERT INTO users
+        (id, name, username, group_id, password)
     VALUES
-        (1, 'Krasimir', 'Hristozov', null, null),
-        (2, 'Maria', 'Hristozova', null, null),
-        (3, 'Masha', 'Hristozova', 1, 2),
-        (4, 'Jane', 'Smith', null, null),
-        (5, 'John', 'Smith', null, null),
-        (6, 'Richard', 'Smith', 4, 5),
-        (7, 'Donna', 'Smith', 4, 5),
-        (8, 'Josh', 'Harrelson', null, null),
-        (9, 'Anna', 'Harrelson', 7, 8);
+        (1, 'Aldo', 'user1', 1,"$pass"),
+        (2, 'Maria', 'user2', 2,"$pass"),
+        (3, 'John', 'user3', 1,"$pass");
 EOS;
 
 try {
